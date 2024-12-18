@@ -101,17 +101,18 @@ export class Img extends Elmt {
     }
 }
 
-export class Item extends Elmt {
-    constructor(label = null, image = null, id = null, classList = []) {
+export class Item {
+    constructor(label = null, href = "../", image = null, id = null, classList = []) {
         classList.push("item")
 
-        const s = super("div", id, classList)
+        const s = new Link(label, href, id, classList)
+
         if (image) {
-            this.append(new Img(image))
+            s.append(new Img(image))
         }
 
         if (label) {
-            this.append(new Text(label, "3"))
+            s.append(new Text(label, "3"))
         }
 
         return s
